@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public Wave[] waves;
+    public Transform[] spawnPoints;
     private int waveIndex = 0;
     public float timeBetweenWaves = 5f;
     public float waveTimer;
@@ -92,7 +93,8 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy(Transform _enemy)
     {
-        Instantiate(_enemy, transform.position, transform.rotation);
+        var randomIndex = Random.Range(0, spawnPoints.Length);
+        Instantiate(_enemy, spawnPoints[randomIndex].position, transform.rotation);
         Debug.Log("Spawning Enemy: " + _enemy.name);
     }
 
