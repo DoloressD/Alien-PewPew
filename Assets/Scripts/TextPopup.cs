@@ -23,14 +23,24 @@ public class TextPopup : MonoBehaviour
         return popup;
     }
 
+    public static TextPopup CreateWaveText(string text)
+    {
+        Vector2 titlePos = new Vector2(0, 3);
+        var popup = Instantiate(GameManager.i.uiManager.TitlePopup, titlePos, Quaternion.identity);
+        popup.Setup(text);
+
+        return popup;
+    }
+
     private void Awake()
     {
         textMesh = GetComponent<TextMeshPro>();
     }
 
-    public void Setup(int damageAmount, bool isEnemy = false)
+    public void Setup(int damageAmount, bool isEnemy)
     {
         fadeTimer = 1;
+        textMesh.text = damageAmount.ToString();
 
         if (isEnemy)
             textMesh.outlineColor = textMesh.color = GameManager.i.uiManager.EnemyTextColor;
@@ -40,9 +50,19 @@ public class TextPopup : MonoBehaviour
         textSize = textMesh.transform.localScale;
         textMesh.transform.localScale = Vector2.zero;
         textMesh.transform.LeanScale(textSize, 0.25f).setEaseOutBounce();
+    }
 
-        if (type == TextPopupType.Damage)
-            textMesh.text = damageAmount.ToString();
+    public void Setup(string text)
+    {
+        fadeTimer = 3;
+        textMesh.text = text;
+
+        textColor = textMesh.color;
+
+        textSize = textMesh.transform.localScale;
+        textMesh.transform.localScale = Vector2.zero;
+        textMesh.transform.LeanScale(textSize, 0.25f).setEaseOutBounce();
+
     }
 
     private void Update()

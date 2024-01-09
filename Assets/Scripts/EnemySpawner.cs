@@ -77,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
-        Debug.Log("Spawning Wave " + _wave.name);
+        TextPopup.CreateWaveText(_wave.name);
         state = SpawnState.Spawning;
 
         for (int i = 0; i < _wave.count; i++)
