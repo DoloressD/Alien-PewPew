@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : Character
 {
     private PlayerController player;
+    private Vector2 bulletDirection;
 
     private void FixedUpdate()
     {
@@ -10,6 +11,7 @@ public class Enemy : Character
             player = FindObjectOfType<PlayerController>();
         var playerIsLeft = player.transform.position.x < transform.position.x;
         var direction = playerIsLeft ? -1 : 1;
+        bulletDirection = playerIsLeft ? Vector2.left : Vector2.right;
         rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
     }
 
@@ -20,7 +22,7 @@ public class Enemy : Character
             if (attackTimer <= 0)
             {
                 var bullet = Instantiate(bulletPrefab, transform);
-                bullet.GetComponent<Bullet>().Setup(damage, rangedAttackSpeed, rangedAttackRange, enemyMask, Vector2.left);
+                bullet.GetComponent<Bullet>().Setup(damage, rangedAttackSpeed, rangedAttackRange, enemyMask, bulletDirection);
                 attackTimer = attackCD;
             }
             else

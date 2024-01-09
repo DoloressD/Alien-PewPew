@@ -32,6 +32,7 @@ public class PlayerController : Character
     {
         if(!isBlocking) //we disallow movement during block
             HandleMovement();
+        UpdatePlayerFacing();
         HandleAttack();
         HandleBlocking();
     }
@@ -132,6 +133,20 @@ public class PlayerController : Character
         base.TakeDamage(damage - damageModifier);
 
         GameManager.i.uiManager.UpdateHealthBar(health);
+    }
+
+    private void UpdatePlayerFacing()
+    {
+        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (transform.position.x < mousePos.x) //You are to the left of the mouse, Face Right
+        {
+            transform.localScale = Vector2.one;
+        }
+        else
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
     }
 
     private void OnDrawGizmosSelected() //Just to see the attack range when we select the player in editor
