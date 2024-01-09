@@ -30,6 +30,8 @@ public class EnemySpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.Timer;
 
+    private string[] waveCompletedWords = { "Nice!", "Wow!", "Not Done Yet...", "Spawning...", "Wave Completed!" };
+
     private void Start()
     {
         waveTimer = timeBetweenWaves;
@@ -77,7 +79,8 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnWave(Wave _wave)
     {
-        TextPopup.CreateWaveText(_wave.name);
+        TextPopup.CreateTitlePopup(_wave.name);
+
         state = SpawnState.Spawning;
 
         for (int i = 0; i < _wave.count; i++)
@@ -100,7 +103,8 @@ public class EnemySpawner : MonoBehaviour
 
     void WaveDone()
     {
-        Debug.Log("Wave done!");
+        var randomIndex = Random.Range(0, waveCompletedWords.Length);
+        TextPopup.CreateTitlePopup(waveCompletedWords[randomIndex]);
 
         state = SpawnState.Timer;
         waveTimer = timeBetweenWaves;

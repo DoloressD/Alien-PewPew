@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         else
             i = this;
+
+        TextPopup.CreateTitlePopup("Shoot The Enemies!");
     }
 
     public void RevivePlayer()

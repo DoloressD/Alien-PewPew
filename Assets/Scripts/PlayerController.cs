@@ -89,7 +89,10 @@ public class PlayerController : Character
                 Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPos.position, meleeAttackRange, enemyMask);
                 for (int i = 0; i < enemiesHit.Length; i++)
                 {
-                    enemiesHit[i].GetComponent<Enemy>().TakeDamage(damage);
+                    if (enemiesHit[i].CompareTag("Enemy"))
+                        enemiesHit[i].GetComponent<Enemy>().TakeDamage(damage);
+                    else
+                        Destroy(enemiesHit[i]);
                 }
                 attackTimer = attackCD;
                 Destroy(slash, 0.5f);

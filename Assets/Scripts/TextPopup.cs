@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public enum TextPopupType
 {
@@ -23,13 +24,11 @@ public class TextPopup : MonoBehaviour
         return popup;
     }
 
-    public static TextPopup CreateWaveText(string text)
-    {
+    public static void CreateTitlePopup(string text)
+    {      
         Vector2 titlePos = new Vector2(0, 3);
         var popup = Instantiate(GameManager.i.uiManager.TitlePopup, titlePos, Quaternion.identity);
         popup.Setup(text);
-
-        return popup;
     }
 
     private void Awake()
