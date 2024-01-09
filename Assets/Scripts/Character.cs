@@ -13,15 +13,19 @@ public class Character : MonoBehaviour
     protected Rigidbody2D rb;
     protected float attackTimer;
     public float attackCD;
+    private bool isEnemy;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (CompareTag("Enemy"))
+            isEnemy = true;
     }
 
     public virtual void TakeDamage(int damage)
     {
         health -= damage;
+        TextPopup.CreateDamagePopup(damage, transform, isEnemy);
 
         GetComponent<SpriteRenderer>().color = Color.red;
         Invoke("ResetColor", 0.25f);

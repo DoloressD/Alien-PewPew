@@ -8,6 +8,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image attackCD;
     [SerializeField] Image dashCD;
     [SerializeField] Slider hpSlider;
+    [SerializeField] TextPopup damagePopup;
+    public TextPopup DamagePopup => damagePopup;
+    [SerializeField] TextPopup titlePopup;
+    public TextPopup TitlePopup => titlePopup;
+    [SerializeField] Color enemyTextColor;
+    public Color EnemyTextColor => enemyTextColor;
 
     public void UpdateAttackCD(float amount)
     {

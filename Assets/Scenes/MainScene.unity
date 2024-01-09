@@ -4594,6 +4594,8 @@ MonoBehaviour:
   attackCD: {fileID: 1620458352}
   dashCD: {fileID: 1992004240}
   hpSlider: {fileID: 771557116}
+  damagePopup: {fileID: 4818687707526157229, guid: bdb13044d6e684451ab07d63b6f02431, type: 3}
+  titlePopup: {fileID: 0}
 --- !u!1001 &8800962576869363876
 PrefabInstance:
   m_ObjectHideFlags: 0
