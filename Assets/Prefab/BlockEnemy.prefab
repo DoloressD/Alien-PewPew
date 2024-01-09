@@ -85,6 +85,10 @@ PrefabInstance:
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8310874679148480317, guid: 0140df33026144ecbb9eb0dc2e4f8796, type: 3}
+      propertyPath: blinkAnimPrefab
+      value: 
+      objectReference: {fileID: 6519120767603765462, guid: 6d729d840b73b445b802cb3c47d38803, type: 3}
+    - target: {fileID: 8310874679148480317, guid: 0140df33026144ecbb9eb0dc2e4f8796, type: 3}
       propertyPath: rangedAttackSpeed
       value: 0
       objectReference: {fileID: 0}

@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected float rangedAttackRange;
     [SerializeField] protected float rangedAttackSpeed;
+    [SerializeField] private GameObject blinkAnimPrefab;
     public LayerMask enemyMask;
 
     protected Rigidbody2D rb;
@@ -45,6 +46,8 @@ public class Character : MonoBehaviour
 
     public virtual void Death()
     {
+        var anim = Instantiate(blinkAnimPrefab, transform.position, Quaternion.identity);
+        Destroy(anim, anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         Destroy(this.gameObject);
     }
 }

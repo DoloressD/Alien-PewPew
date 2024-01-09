@@ -177,6 +177,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4727118947456933378, guid: 134d9a5b667654de4a6b7ff1aa843d21, type: 3}
   rangedAttackRange: 0.5
   rangedAttackSpeed: 3
+  blinkAnimPrefab: {fileID: 6519120767603765462, guid: 6d729d840b73b445b802cb3c47d38803, type: 3}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
